@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спасибо! | DJ ARS</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Oswald:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #00f0ff;
+            --secondary-color: #ff00e5;
+            --accent-color: #7b2dff;
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --text-light: #ffffff;
+            --text-gray: #888888;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(255, 0, 229, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 240, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(123, 45, 255, 0.1) 0%, transparent 40%);
+            animation: bgRotate 30s linear infinite;
+        }
+
+        @keyframes bgRotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            animation: particleFloat 15s infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes particleFloat {
+
+            0%,
+            100% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            90% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Glowing lines */
+        .glow-lines {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .glow-line {
+            position: absolute;
+            width: 2px;
+            height: 200px;
+            background: linear-gradient(to bottom, transparent, var(--primary-color), transparent);
+            animation: lineMove 8s infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes lineMove {
+            0% {
+                transform: translateY(-200px);
+            }
+
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Logo */
+        .logo {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        /* Main Content */
+        .thank-you-container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 60px 40px;
+            max-width: 800px;
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 30px;
+            backdrop-filter: blur(20px);
+            box-shadow:
+                0 0 60px rgba(0, 240, 255, 0.1),
+                0 0 100px rgba(255, 0, 229, 0.05),
+                inset 0 0 60px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Success Icon */
+        .success-icon-wrapper {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 40px;
+        }
+
+        .success-icon {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: iconPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
+            position: relative;
+            z-index: 2;
+        }
+
+        .success-icon::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            z-index: -1;
+            animation: pulse 2s infinite;
+        }
+
+        .success-icon i {
+            font-size: 70px;
+            color: var(--bg-dark);
+            animation: checkMark 0.5s ease 0.3s both;
+        }
+
+        .ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            animation: ringExpand 1s ease-out infinite;
+        }
+
+        .ring:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .ring:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes iconPop {
+            0% {
+                transform: scale(0);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes checkMark {
+            0% {
+                opacity: 0;
+                transform: scale(0) rotate(-45deg);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes ringExpand {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(2);
+                opacity: 0;
+            }
+        }
+
+        /* Typography */
+        .thank-you-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(40px, 8vw, 72px);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, var(--text-light), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease 0.4s both;
+            text-shadow: 0 0 40px rgba(0, 240, 255, 0.3);
+        }
+
+        .thank-you-subtitle {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--secondary-color);
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .thank-you-text {
+            font-size: 18px;
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease 0.8s both;
+        }
+
+        /* Contact Info */
+        .quick-contact {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease 1s both;
+        }
+
+        .quick-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .quick-contact-item:hover {
+            background: rgba(0, 240, 255, 0.1);
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .quick-contact-item i {
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+
+        .quick-contact-item span {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease 1.2s both;
+        }
+
+        .social-link {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 22px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-color: transparent;
+            color: var(--bg-dark);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3);
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            padding: 20px 60px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-decoration: none;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease 1.4s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow:
+                0 15px 40px rgba(0, 240, 255, 0.4),
+                0 0 60px rgba(255, 0, 229, 0.2);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .thank-you-container {
+                margin: 20px;
+                padding: 40px 25px;
+            }
+
+            .success-icon-wrapper {
+                width: 120px;
+                height: 120px;
+            }
+
+            .success-icon {
+                width: 120px;
+                height: 120px;
+            }
+
+            .success-icon i {
+                font-size: 50px;
+            }
+
+            .quick-contact {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo {
+                top: 20px;
+                left: 20px;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html" class="logo">DJ ARS</a>
+
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Glow Lines -->
+    <div class="glow-lines" id="glowLines"></div>
+
+    <!-- Confetti Container -->
+    <div id="confetti"></div>
+
+    <!-- Main Content -->
+    <div class="thank-you-container">
+        <div class="success-icon-wrapper">
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+        </div>
+
+        <h1 class="thank-you-title" data-i18n="thankyou_title"></h1>
+        <h2 class="thank-you-subtitle" data-i18n="thankyou_subtitle"></h2>
+        <p class="thank-you-text" data-i18n="thankyou_text"></p>
+
+        <div class="quick-contact">
+            <a href="viber://chat?number=%2B380939303944" class="quick-contact-item"
+                style="text-decoration: none; color: inherit;">
+                <i class="fas fa-phone"></i>
+                <span data-i18n="thankyou_contact_viber"></span>
+            </a>
+            <a href="https://t.me/Mr_Poprich" target="_blank" class="quick-contact-item"
+                style="text-decoration: none; color: inherit;">
+                <i class="fab fa-telegram"></i>
+                <span>@Mr_Poprich</span>
+            </a>
+        </div>
+
+        <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-viber"></i></a>
+        </div>
+
+        <a href="index.html" class="btn" data-i18n="thankyou_back_btn"></a>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const colors = ['#00f0ff', '#ff00e5', '#7b2dff'];
+
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Create glow lines
+        function createGlowLines() {
+            const container = document.getElementById('glowLines');
+            const colors = ['#00f0ff', '#ff00e5'];
+
+            for (let i = 0; i < 5; i++) {
+                const line = document.createElement('div');
+                line.className = 'glow-line';
+                line.style.left = (i * 25) + '%';
+                line.style.background = `linear-gradient(to bottom, transparent, ${colors[i % 2]}, transparent)`;
+                line.style.animationDelay = (i * 1.5) + 's';
+                container.appendChild(line);
+            }
+        }
+
+        // Create confetti
+        function createConfetti() {
+            const container = document.getElementById('confetti');
+            const colors = ['#00f0ff', '#ff00e5', '#7b2dff', '#ffffff', '#ffff00', '#00ff00'];
+            const shapes = ['square', 'circle'];
+
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.position = 'fixed';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-20px';
+                confetti.style.width = (Math.random() * 10 + 5) + 'px';
+                confetti.style.height = confetti.style.width;
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = shapes[Math.floor(Math.random() * shapes.length)] === 'circle' ? '50%' : '0';
+                confetti.style.animation = `confettiFall ${Math.random() * 3 + 2}s linear forwards`;
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(confetti);
+            }
+
+            // Add confetti animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes confettiFall {
+                    0% {
+                        transform: translateY(0) rotate(0deg);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translateY(100vh) rotate(720deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Remove confetti after animation
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 5000);
+        }
+
+        // Initialize
+        createParticles();
+        createGlowLines();
+        createConfetti();
+    </script>
+    <script src="js/i18n.js"></script>
+</body>
+
+</html>

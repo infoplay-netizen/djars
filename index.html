@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ ARS | Свадьбы и Корпоративы</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Oswald:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">DJ ARS</a>
+        <ul class="nav-links">
+            <li><a href="#home" data-i18n="nav_home"></a></li>
+            <li><a href="#about" data-i18n="nav_about"></a></li>
+            <li><a href="#pricing" data-i18n="nav_pricing"></a></li>
+            <li><a href="#reviews" data-i18n="nav_reviews"></a></li>
+            <li><a href="#gallery" data-i18n="nav_gallery"></a></li>
+            <li><a href="#booking" data-i18n="nav_booking"></a></li>
+        </ul>
+        <div class="language-switcher">
+            <select class="lang-selector">
+                <option value="uk">УКР</option>
+                <option value="ru">РУС</option>
+                <option value="en">ENG</option>
+            </select>
+        </div>
+        <div class="menu-btn" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="floating-circles">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-subtitle" data-i18n="hero_subtitle"></p>
+            <h1 class="hero-title">
+                <span data-i18n="hero_title_main"></span>
+                <span data-i18n="hero_title_span"></span>
+            </h1>
+            <p class="hero-description" data-i18n="hero_description"></p>
+            <div class="hero-buttons">
+                <a href="#booking" class="btn btn-primary" data-i18n="hero_btn_booking"></a>
+                <a href="#pricing" class="btn btn-secondary" data-i18n="hero_btn_pricing"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-header">
+            <p class="section-subtitle" data-i18n="about_subtitle"></p>
+            <h2 class="section-title" data-i18n="about_title"></h2>
+        </div>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    alt="DJ ARS">
+            </div>
+            <div class="about-text">
+                <h3 data-i18n="about_name"></h3>
+                <p data-i18n="about_text1"></p>
+                <p data-i18n="about_text2"></p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-i18n="about_stat1_number"></div>
+                        <div class="stat-label" data-i18n="about_stat1_label"></div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-i18n="about_stat2_number"></div>
+                        <div class="stat-label" data-i18n="about_stat2_label"></div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-i18n="about_stat3_number"></div>
+                        <div class="stat-label" data-i18n="about_stat3_label"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="section-header">
+            <p class="section-subtitle" data-i18n="pricing_subtitle"></p>
+            <h2 class="section-title" data-i18n="pricing_title"></h2>
+        </div>
+        <p class="pricing-description" data-i18n="pricing_description"></p>
+        <div class="pricing-grid">
+            <!-- Minimal Package -->
+            <div class="pricing-card">
+                <h3 class="pricing-title" data-i18n="pricing_min_title"></h3>
+                <ul class="pricing-features">
+                    <li data-i18n="pricing_min_feature1"></li>
+                    <li data-i18n="pricing_min_feature2"></li>
+                    <li data-i18n="pricing_min_feature3"></li>
+                    <li data-i18n="pricing_min_feature4"></li>
+                    <li data-i18n="pricing_min_feature5"></li>
+                    <li data-i18n="pricing_min_feature6"></li>
+                    <li data-i18n="pricing_min_feature7"></li>
+                    <li data-i18n="pricing_min_feature8"></li>
+                </ul>
+                <div class="pricing-image">
+                    <img src="https://images.unsplash.com/photo-1558584673-90d3e2c9b818?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="DJ Equipment">
+                </div>
+                <div class="pricing-price" data-i18n="pricing_min_price"></div>
+                <a href="#booking" class="btn btn-primary pricing-btn" data-i18n="pricing_min_btn"></a>
+            </div>
+
+            <!-- Standard Package -->
+            <div class="pricing-card featured">
+                <h3 class="pricing-title" data-i18n="pricing_std_title"></h3>
+                <ul class="pricing-features">
+                    <li data-i18n="pricing_std_feature1"></li>
+                    <li data-i18n="pricing_std_feature2"></li>
+                    <li data-i18n="pricing_std_feature3"></li>
+                    <li data-i18n="pricing_std_feature4"></li>
+                    <li data-i18n="pricing_std_feature5"></li>
+                    <li data-i18n="pricing_std_feature6"></li>
+                    <li data-i18n="pricing_std_feature7"></li>
+                    <li data-i18n="pricing_std_feature8"></li>
+                    <li data-i18n="pricing_std_feature9"></li>
+                    <li data-i18n="pricing_std_feature10"></li>
+                </ul>
+                <div class="pricing-image">
+                    <img src="https://images.unsplash.com/photo-1558584673-90d3e2c9b818?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="DJ Equipment">
+                </div>
+                <div class="pricing-price" data-i18n="pricing_std_price"></div>
+                <a href="#booking" class="btn btn-primary pricing-btn" data-i18n="pricing_std_btn"></a>
+            </div>
+
+            <!-- Maximum Package -->
+            <div class="pricing-card">
+                <h3 class="pricing-title" data-i18n="pricing_max_title"></h3>
+                <ul class="pricing-features">
+                    <li data-i18n="pricing_max_feature1"></li>
+                    <li data-i18n="pricing_max_feature2"></li>
+                    <li data-i18n="pricing_max_feature3"></li>
+                    <li data-i18n="pricing_max_feature4"></li>
+                    <li data-i18n="pricing_max_feature5"></li>
+                    <li data-i18n="pricing_max_feature6"></li>
+                    <li data-i18n="pricing_max_feature7"></li>
+                    <li data-i18n="pricing_max_feature8"></li>
+                    <li data-i18n="pricing_max_feature9"></li>
+                    <li data-i18n="pricing_max_feature10"></li>
+                </ul>
+                <div class="pricing-image">
+                    <img src="https://images.unsplash.com/photo-1558584673-90d3e2c9b818?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="DJ Equipment">
+                </div>
+                <div class="pricing-price" data-i18n="pricing_max_price"></div>
+                <a href="#booking" class="btn btn-primary pricing-btn" data-i18n="pricing_max_btn"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="section-header">
+            <p class="section-subtitle" data-i18n="reviews_subtitle"></p>
+            <h2 class="section-title" data-i18n="reviews_title"></h2>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4 class="review-name" data-i18n="review1_name"></h4>
+                </div>
+                <p class="review-text" data-i18n="review1_text"></p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4 class="review-name" data-i18n="review2_name"></h4>
+                </div>
+                <p class="review-text" data-i18n="review2_text"></p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4 class="review-name" data-i18n="review3_name"></h4>
+                </div>
+                <p class="review-text" data-i18n="review3_text"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="section-header">
+            <p class="section-subtitle" data-i18n="gallery_subtitle"></p>
+            <h2 class="section-title" data-i18n="gallery_title"></h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    alt="Wedding">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="Party">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1504680177321-2e6a879aac86?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="DJ Setup">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1478147427282-58a87a120781?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="Corporate">
+                <div class="gallery-overlay"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    alt="Event">
+                <div class="gallery-overlay"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
+        <div class="booking-container">
+            <div class="booking-image">
+                <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    alt="DJ на свадьбе">
+                <div class="booking-image-overlay"></div>
+            </div>
+            <div class="booking-form-wrapper">
+                <h2 class="booking-title" data-i18n="booking_title"></h2>
+                <p class="booking-subtitle" data-i18n="booking_subtitle"></p>
+
+                <form class="booking-form" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="bef0f4f3-f6a7-4bf3-8c49-10fe3e430022">
+                    <input type="hidden" name="subject" value="Новая заявка на бронирование - DJ ARS">
+                    <input type="hidden" name="redirect" value="thank-you.html">
+
+                    <div class="form-group">
+                        <input type="text" name="name" data-i18n="booking_form_name" placeholder="Имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" data-i18n="booking_form_phone" placeholder="Номер телефона"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <select name="event_type" required data-i18n="booking_form_event">
+                            <option value="" disabled selected data-i18n="booking_form_event"></option>
+                            <option value="wedding" data-i18n="booking_form_event_option1"></option>
+                            <option value="corporate" data-i18n="booking_form_event_option2"></option>
+                            <option value="birthday" data-i18n="booking_form_event_option3"></option>
+                            <option value="party" data-i18n="booking_form_event_option4"></option>
+                            <option value="other" data-i18n="booking_form_event_option5"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" name="event_date" data-i18n="booking_form_date" placeholder="Дата" required>
+                    </div>
+                    <button type="submit" class="btn btn-gradient" data-i18n="booking_form_btn"></button>
+                    <p class="form-disclaimer" data-i18n="booking_form_disclaimer"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-header">
+            <p class="section-subtitle" data-i18n="contact_subtitle"></p>
+            <h2 class="section-title" data-i18n="contact_title"></h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3 data-i18n="contact_heading"></h3>
+                <p data-i18n="contact_text"></p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong data-i18n="contact_email"></strong>
+                            <p>infoplaymusic8@gmail.com</p>
+                        </div>
+                    </div>
+                    <a href="viber://chat?number=%2B380939303944" class="contact-item"
+                        style="text-decoration: none; color: inherit;">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong data-i18n="contact_phone"></strong>
+                            <p>+380 (93) 930-39-44</p>
+                        </div>
+                    </a>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong data-i18n="contact_location"></strong>
+                            <p data-i18n="contact_location_value"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-viber"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Widget -->
+    <div class="contact-widget">
+        <div class="contact-toggle" onclick="toggleContactWidget()">
+            <i class="fas fa-phone"></i>
+        </div>
+        <div class="contact-panel">
+            <h3 class="contact-panel-title" data-i18n="widget_title">Зв'язатися зі мною</h3>
+            <div class="contact-option">
+                <a href="viber://chat?number=%2B380939303944" class="contact-link viber-link">
+                    <i class="fab fa-viber"></i>
+                    <span data-i18n="widget_viber">Viber</span>
+                    <small data-i18n="widget_viber_desc">Написати або зателефонувати</small>
+                </a>
+            </div>
+            <div class="contact-option">
+                <a href="https://t.me/Mr_Poprich" target="_blank" class="contact-link telegram-link">
+                    <i class="fab fa-telegram"></i>
+                    <span data-i18n="widget_telegram">Telegram</span>
+                    <small>@Mr_Poprich</small>
+                </a>
+            </div>
+            <div class="contact-option">
+                <a href="tel:+380939303944" class="contact-link phone-link">
+                    <i class="fas fa-phone"></i>
+                    <span data-i18n="widget_call">Зателефонувати</span>
+                    <small>+380 (93) 930-39-44</small>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">DJ ARS</div>
+        <p class="footer-text" data-i18n="footer_copyright"></p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/i18n.js"></script>
+</body>
+
+</html>
