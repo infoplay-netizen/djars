@@ -8,10 +8,10 @@ function toggleMenu() {
 function initLanguageSelector() {
     const selectors = document.querySelectorAll('.lang-selector');
     const currentLang = localStorage.getItem('preferredLanguage') || 'uk';
-    
+
     selectors.forEach(selector => {
         selector.value = currentLang;
-        selector.addEventListener('change', function() {
+        selector.addEventListener('change', function () {
             const selectedLang = this.value;
             localStorage.setItem('preferredLanguage', selectedLang);
             // Load translations without page reload
@@ -22,10 +22,63 @@ function initLanguageSelector() {
     });
 }
 
+// Handle form submission
+function initBookingForm() {
+    const bookingForm = document.querySelector('.booking-form');
+    if (!bookingForm) return;
+
+    // Remove existing listener if any and add new one
+    bookingForm.removeEventListener('submit', handleFormSubmit);
+    bookingForm.addEventListener('submit', handleFormSubmit);
+}
+
+async function handleFormSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.textContent;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = '...';
+
+    const formData = new FormData(form);
+
+    try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        const result = await response.json();
+        if (response.status === 200 || result.success) {
+            window.location.href = 'thank-you.html';
+        } else {
+            console.error(result);
+            alert(result.message || "Error!");
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalBtnText;
+        }
+    } catch (error) {
+        console.error(error);
+        alert("Something went wrong. Please try again or contact me directly.");
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+    }
+}
+
 // Call when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initLanguageSelector();
+    initBookingForm();
 });
+
+// Immediate call if script is loaded late
+if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    initBookingForm();
+}
 
 // Toggle contact widget
 function toggleContactWidget() {
@@ -34,12 +87,12 @@ function toggleContactWidget() {
 }
 
 // Close contact widget when clicking outside
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     const widget = document.querySelector('.contact-widget');
     const toggle = document.querySelector('.contact-toggle');
-    
-    if (widget && toggle && 
-        !widget.contains(event.target) && 
+
+    if (widget && toggle &&
+        !widget.contains(event.target) &&
         !toggle.contains(event.target) &&
         widget.classList.contains('active')) {
         widget.classList.remove('active');
@@ -47,16 +100,16 @@ document.addEventListener('click', function(event) {
 });
 
 // Close contact widget on Escape key press
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
     const widget = document.querySelector('.contact-widget');
-    
+
     if (widget && widget.classList.contains('active') && event.key === 'Escape') {
         widget.classList.remove('active');
     }
 });
 
 // Navbar scroll effect
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
     const nav = document.querySelector('nav');
     if (window.scrollY > 50) {
         nav.classList.add('scrolled');
@@ -67,7 +120,7 @@ window.addEventListener('scroll', function() {
 
 // Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
